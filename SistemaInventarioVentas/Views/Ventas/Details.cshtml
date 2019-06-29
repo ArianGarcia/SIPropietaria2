@@ -1,0 +1,95 @@
+﻿@model SistemaInventarioVentas.Models.Venta
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Nombre cliente")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+
+<h2>Detalles de la compra</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nombre")
+        </th>
+        <th>
+            @Html.DisplayName("Precio Unitario")
+        </th>
+        <th>
+            @Html.DisplayName("Cantidad")
+        </th>
+        <th>
+            @Html.DisplayName("SubTotal")
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model.DetallesVentas)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+        </tr>
+    }
+
+</table>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SistemaInventarioVentas.Models
         [Required(ErrorMessage = "El campo codigo Almacen no puede ir vacio")]
         public string CodigoAlmacen { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Producto> Productos { get; set; }
     }
 }

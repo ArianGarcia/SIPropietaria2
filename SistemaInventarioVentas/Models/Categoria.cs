@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaInventarioVentas.Models
@@ -12,6 +13,7 @@ namespace SistemaInventarioVentas.Models
 
         public bool Estado { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Producto> Productos { get; set; }
     }
 }

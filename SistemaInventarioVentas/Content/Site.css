@@ -22,3 +22,80 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+/*table ventas productos*/
+
+.salesTableWrapper {
+    padding-right: 0;
+}
+
+#salesProductTableDiv {
+    max-height: 524px;
+    overflow-y: scroll;
+    height: 524px;
+    padding: 0 !important;
+}
+
+#salesTableFormDiv {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+
+.totalDiv {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    padding: 12px 20px 12px 10px;
+    height: 100%;
+}
+
+.TotalAndSalesButtonDiv {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 1em;
+    margin-left: 0;
+}
+
+.salesbuttonDiv {
+    padding-right: 0px;
+}
+
+#salesButton {
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.th-sticky th {
+    position: sticky;
+    top: 0;
+}
+
+.salesButtonText,
+.addButtonText {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.salesButtonText {
+    color: black;
+    padding-right: 0.5em;
+}
+
+.addButtonText {
+    padding-left: 0.5em;
+}
+
+
+
+.formWith {
+    width: 70px;
+}
+
+td.Inputnumber {
+    width: 90px;
+}

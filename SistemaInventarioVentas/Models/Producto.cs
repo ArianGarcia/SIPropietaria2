@@ -33,7 +33,7 @@ namespace SistemaInventarioVentas.Models
         public int CategoriaID { get; set; }
         public virtual Categoria Categoria { get; set; }
 
-        public Almacen Almacen { get; set; }
+        public virtual Almacen Almacen { get; set; }
         [Required(ErrorMessage = "Debe de elegir un almacen")]
         public int AlmacenID { get; set; }
     }

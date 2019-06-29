@@ -1,0 +1,152 @@
+﻿@model SistemaInventarioVentas.Models.viewmodels.VentaViewModel
+
+@{
+    ViewBag.Title = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="row">
+
+    <div class="salesTableWrapper col col-lg-8 col-sm-12 col-md-8">
+        <div id="salesProductTableDiv" class="">
+
+            <table id="salesProductTable" class="table table-bordered productSalesTable text-lg-center">
+                <thead class="thead-dark th-sticky">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cant</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">SubTotal</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="tableProduct"></tbody>
+            </table>
+        </div>
+
+        <div class="row col-lg-12 TotalAndSalesButtonDiv">
+            <div class=" col col-lg-8 totalDiv ">
+                <strong class="totalPrice">Total: $<span id="total">0</span></strong>
+            </div>
+            <div class="col col-lg-4 salesbuttonDiv">
+                <button id="salesButton" type="button" class="btn btn-warning endSalesButton"><span class="salesButtonText">VENDER</span><i class="fas fa-caret-square-right fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="salesTableFormDiv" class="col col-lg-4 col-sm-12 col-md-4">
+        <form method="post" class="salesform">
+
+
+
+            <label for="Client"><strong>Cliente</strong></label>
+            <div class="form-group ">
+                <div id="clientDiv" class="input-group inputDiv">
+                    <div class="input-group-prepend">
+                        <button type="button" id="searchClient" class="input-group-text"><i id="searchClientIcon" class="fa fa-search"></i></button>
+                        <input type="text" id="clientInput" class="SalessearchInput">
+                    </div>
+                    @Html.DropDownListFor(m => m.Clientes, new SelectList(Model.Clientes, "ClientID", "Nombre"), "seleccione un cliente",
+                           new { @class = "form-control", @id = "clientSelect" })
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+            </div>
+
+            <label for="Product"><strong>Producto *</strong></label>
+            <div class="form-group ">
+                <div id="productDiv" class="input-group inputDiv">
+                    <div class="input-group-prepend">
+                        <button type="button" id="searchProduct" class="input-group-text"><i id="searchProductIcon" class="fa fa-search"></i></button>
+                        <input type="text" id="productInput" class="SalessearchInput">
+                    </div>
+
+                    @Html.DropDownListFor(m => m.Productos, new SelectList(Model.Productos, "ProductID", "Name"),"seleccione un producto",
+                           new { @class = "form-control", @id = "productSelect" })
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button type="button" id="addProduct" class="btn btn-success btn-block"><i class="fa fa-shopping-cart fa-2x"></i><span class="addButtonText">Agregar</span></button>
+            </div>
+            @*<div class="form-group">
+                <label><strong>Metodo de pago *</strong></label>
+                @Html.DropDownListFor(m => m.PaymentMethods, new SelectList(Model.PaymentMethods, "PaymentMethodID", "PaymentType"),"seleccione un metodo de pago",
+                          new { @class = "form-control", @id = "paymentMethod", @name = "paymentMethod" })
+                @Html.ValidationMessageFor(m => m.PaymentMethods)
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label><strong>Estado de la venta *</strong></label>
+                @Html.DropDownListFor(m => m.SaleState, new SelectList(Model.SaleState, "SaleStateID", "SaleStateType"),"seleccione el estado de la venta",
+                          new { @class = "form-control", @id = "SaleState", @name = "SaleState" })
+                @Html.ValidationMessageFor(m => m.SaleState)
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Agregar descuento </strong></label>
+                <select class="form-control" id="discountSelect" name="discountSelect">
+                    <option value="">Seleccione un tipo de descuento</option>
+                    @foreach (var discount in Model.Discounts)
+                    {
+                        <option value="@discount.DiscountID">@discount.DiscountName -- @discount.Discountvalue%</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Total pagado *</strong></label>
+                @Html.TextBoxFor(m => m.TotalPaid, new { @class = "form-control", @id = "TotalPaid", @name = "TotalPaid", @type = "number" })
+                <div class="invalid-feedback"></div>
+            </div>*@
+
+
+        </form>
+
+    </div>
+</div>
+
+
+<!--MODAL-->
+<div class="modal fade" id="commentaryModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Añada un comentario</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label><strong>Comentario</strong></label>
+                    @Html.TextAreaFor(m => m.Comentario, 4, 50, new { @class = "form-control", @id = "commentary", @name = "commentary" })
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="addComentarySucces">Aceptar</button>
+                <button type="button" class="btn btn-danger" id="cancelCommentary">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Scripts/VentaScript.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
